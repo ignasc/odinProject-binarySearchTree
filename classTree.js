@@ -46,6 +46,51 @@ class Tree {
         };
     }
 
+    // function that deletes the node if it exists in the tree
+    deleteItem(value){
+        let currentNode = this.root;
+        let previousNode = null;
+        let previousIsLeft = true;
+
+        while(true){
+            if(currentNode == null){
+                break;
+            };
+
+            if(currentNode.data == value){
+
+                //3 cases:
+
+                //delete node that has no children
+                if(currentNode.left == null && currentNode.right == null){
+
+                    if(previousIsLeft){
+                        previousNode.left = null;
+                    } else {
+                        previousNode.right = null;
+                    };
+                    break;
+                }
+
+                //delete node with 1 child
+
+                //delete node with 2 children
+
+                break;
+            };
+
+            if(currentNode.data > value){
+                previousNode = currentNode;
+                currentNode = currentNode.left;
+                previousIsLeft = true;
+            } else {
+                previousNode = currentNode;
+                currentNode = currentNode.right;
+                previousIsLeft = false;
+            };
+        };
+    }
+
     //function that outputs a visual representation of the tree in console
     prettyPrint = (node = this.root, prefix = '', isLeft = true) => {
         if (node === null) {

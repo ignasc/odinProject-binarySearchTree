@@ -16,6 +16,10 @@ console.log(`\nSorted array without duplicates:\n${arrayNoDuplicates}\n`);
 
 binaryTree.prettyPrint();
 
-console.log(`Inserting value 24`);
+console.log(`\nInserting value 24`);
 binaryTree.insert(24);
+binaryTree.prettyPrint();
+
+console.log(`\nDeleting value 5`);
+binaryTree.deleteItem(5);
 binaryTree.prettyPrint();
