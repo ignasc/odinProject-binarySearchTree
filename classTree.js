@@ -2,19 +2,20 @@ import Node from "./classNode.js";
 
 class Tree {
     constructor(array){
-        let arraySorted = array.sort((a,b)=>{
-            if(a<b){return -1};
-            if(a==b){return 0};
-            if(a>b){return 1};
-        });
-
-        let arrayNoDuplicates = [...new Set(arraySorted)];
-
-        this.root = this.buildTree(arrayNoDuplicates);
+        this.root = this.buildTree(array);
     }
 
     buildTree(array){
-        return "To be implemented";
+        if(array.length == 0){return null};
+        let middleIndex = parseInt(array.length / 2);
+
+        let leftHalfArray = array.slice(0, middleIndex);
+        let rightHalfArray = array.slice(middleIndex + 1);
+
+        return new Node(
+            array[middleIndex],
+            this.buildTree(leftHalfArray),
+            this.buildTree(rightHalfArray))
     }
 
     //function that outputs a visual representation of the tree in console
@@ -23,11 +24,11 @@ class Tree {
             return;
         }
         if (node.right !== null) {
-            prettyPrint(node.right, `${prefix}${isLeft ? '│   ' : '    '}`, false);
+            this.prettyPrint(node.right, `${prefix}${isLeft ? '│   ' : '    '}`, false);
         }
         console.log(`${prefix}${isLeft ? '└── ' : '┌── '}${node.data}`);
         if (node.left !== null) {
-            prettyPrint(node.left, `${prefix}${isLeft ? '    ' : '│   '}`, true);
+            this.prettyPrint(node.left, `${prefix}${isLeft ? '    ' : '│   '}`, true);
         }
     };
 
