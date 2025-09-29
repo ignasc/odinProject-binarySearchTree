@@ -18,8 +18,36 @@ class Tree {
             this.buildTree(rightHalfArray))
     }
 
+    //function that inserts new value into the tree if it does not exist already
+    insert(value){
+        let currentNode = this.root;
+
+        while(true){
+            if(currentNode == null){
+                break;
+            };
+            if(currentNode.data == value){
+                break;
+            };
+
+            if(currentNode.data > value){
+                if(currentNode.left == null){
+                    currentNode.left = new Node(value);
+                    break;
+                };
+                currentNode = currentNode.left;
+            } else {
+                if(currentNode.right == null){
+                    currentNode.right = new Node(value);
+                    break;
+                };
+                currentNode = currentNode.right;
+            };
+        };
+    }
+
     //function that outputs a visual representation of the tree in console
-    prettyPrint = (node, prefix = '', isLeft = true) => {
+    prettyPrint = (node = this.root, prefix = '', isLeft = true) => {
         if (node === null) {
             return;
         }

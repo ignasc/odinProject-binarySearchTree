@@ -12,6 +12,10 @@ let arrayNoDuplicates = [...new Set(arraySorted)];
 
 const binaryTree = new Tree(arrayNoDuplicates);
 
-console.log(`\nSorted array without duplicates:\n${arrayNoDuplicates}\n`)
+console.log(`\nSorted array without duplicates:\n${arrayNoDuplicates}\n`);
 
-binaryTree.prettyPrint(binaryTree.root)
+binaryTree.prettyPrint();
+
+console.log(`Inserting value 24`);
+binaryTree.insert(24);
+binaryTree.prettyPrint();
