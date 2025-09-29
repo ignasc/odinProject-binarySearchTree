@@ -23,3 +23,7 @@ binaryTree.prettyPrint();
 console.log(`\nDeleting value 5`);
 binaryTree.deleteItem(5);
 binaryTree.prettyPrint();
+
+console.log(`\nDeleting value 23`);
+binaryTree.deleteItem(23);
+binaryTree.prettyPrint();

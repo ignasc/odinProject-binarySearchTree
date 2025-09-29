@@ -72,9 +72,21 @@ class Tree {
                     break;
                 }
 
-                //delete node with 1 child
-
                 //delete node with 2 children
+                if(!currentNode.right.right){
+                    console.log(`Node ${value} is single child`)
+                    let childNode = currentNode.right;
+                    childNode.left = currentNode.left;
+
+                    if(previousIsLeft){
+                        previousNode.left = childNode;
+                    } else {
+                        previousNode.right = childNode;
+                    };
+
+                }
+
+                //delete node with single child
 
                 break;
             };
