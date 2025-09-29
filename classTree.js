@@ -1,10 +1,20 @@
+import Node from "./classNode.js";
+
 class Tree {
     constructor(array){
-        this.root = this.buildTree(array);
+        let arraySorted = array.sort((a,b)=>{
+            if(a<b){return -1};
+            if(a==b){return 0};
+            if(a>b){return 1};
+        });
+
+        let arrayNoDuplicates = [...new Set(arraySorted)];
+
+        this.root = this.buildTree(arrayNoDuplicates);
     }
 
     buildTree(array){
-        return null
+        return "To be implemented";
     }
 
     //function that outputs a visual representation of the tree in console
