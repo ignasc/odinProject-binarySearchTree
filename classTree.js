@@ -78,15 +78,46 @@ class Tree {
                     let childNode = currentNode.right;
                     childNode.left = currentNode.left;
 
-                    if(previousIsLeft){
-                        previousNode.left = childNode;
-                    } else {
-                        previousNode.right = childNode;
-                    };
+                    if(previousNode){
+                        if(previousIsLeft){
+                            previousNode.left = childNode;
+                        } else {
+                            previousNode.right = childNode;
+                        };
+                    }else{
+                        this.root = childNode;
+                    }
                     break;
                 }
 
                 //delete node with 2 children
+                let inorderSuccessor = currentNode.right;
+                let previousSuccessor = null;
+
+                while(true){
+                    if(!inorderSuccessor.left){
+                        console.log(`Inorder successor is ${inorderSuccessor.data}`)
+                        break;
+                    }
+                    console.log(`Reading node ${inorderSuccessor.data}`)
+                    previousSuccessor = inorderSuccessor;
+                    inorderSuccessor = inorderSuccessor.left;
+                }
+
+                inorderSuccessor.left = currentNode.left;
+                inorderSuccessor.right = currentNode.right;
+
+                if(previousNode){
+                    if(previousIsLeft){
+                        previousNode.left = inorderSuccessor;
+                    } else {
+                        previousNode.right = inorderSuccessor;
+                    };
+                }else{
+                    this.root = inorderSuccessor;
+                }
+
+                previousSuccessor.left = null;
 
                 break;
             };
