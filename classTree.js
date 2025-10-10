@@ -46,92 +46,87 @@ class Tree {
         };
     }
 
-    // function that deletes the node if it exists in the tree
-    deleteItem(value){
-        let currentNode = this.root;
-        let previousNode = null;
-        let previousIsLeft = true;
-
-        while(true){
-            if(currentNode == null){
-                break;
-            };
-
-            if(currentNode.data == value){
-
-                //3 cases:
-
-                //delete node that has no children
-                if(currentNode.left == null && currentNode.right == null){
-
-                    if(previousIsLeft){
-                        previousNode.left = null;
-                    } else {
-                        previousNode.right = null;
-                    };
-                    break;
-                }
-
-                //delete node with single child
-                if(!currentNode.right.right && !currentNode.right.left){
-                    console.log(`Node ${value} is single child`)
-                    let childNode = currentNode.right;
-                    childNode.left = currentNode.left;
-
-                    if(previousNode){
-                        if(previousIsLeft){
-                            previousNode.left = childNode;
-                        } else {
-                            previousNode.right = childNode;
-                        };
-                    }else{
-                        this.root = childNode;
-                    }
-                    break;
-                }
-
-                //delete node with 2 children
-                let inorderSuccessor = currentNode.right;
-                let previousSuccessor = null;
-
-                while(true){
-                    if(!inorderSuccessor.left){
-                        console.log(`Inorder successor is ${inorderSuccessor.data}`)
-                        break;
-                    }
-                    console.log(`Reading node ${inorderSuccessor.data}`)
-                    previousSuccessor = inorderSuccessor;
-                    inorderSuccessor = inorderSuccessor.left;
-                }
-
-                inorderSuccessor.left = currentNode.left;
-                inorderSuccessor.right = currentNode.right;
-
-                if(previousNode){
-                    if(previousIsLeft){
-                        previousNode.left = inorderSuccessor;
-                    } else {
-                        previousNode.right = inorderSuccessor;
-                    };
-                }else{
-                    this.root = inorderSuccessor;
-                }
-
-                previousSuccessor.left = null;
-
-                break;
-            };
-
-            if(currentNode.data > value){
-                previousNode = currentNode;
-                currentNode = currentNode.left;
-                previousIsLeft = true;
-            } else {
-                previousNode = currentNode;
-                currentNode = currentNode.right;
-                previousIsLeft = false;
-            };
+    //function that returns reference to node
+    getNode(root, value){
+        if(root.data === value){
+            return root;
         };
+
+        if(value < root.data){
+            return this.getNode(root.left, value);
+        } else{
+            return this.getNode(root.right, value);
+        };
+    }
+
+    // function that is called by user to delete a node
+    deleteItem(value){
+
+        const currentNodeRef = null;
+
+        this.deleteNode(this.root, value);
+    }
+
+    // function that is called internally to delete a node
+    deleteNode(root, value){
+        if(root === null){
+            console.log(`Root node is null`)
+            return root;
+        };
+
+        // console.log(`Traversing tree to node ${value}, current node is ${root.data}`)
+
+        let currentNode = root;
+
+        if(value < currentNode.data){
+            //this.deleteNode(currentNode.left, value)
+            currentNode.left = this.deleteNode(currentNode.left, value)
+        }else if(value > currentNode.data){
+            //this.deleteNode(currentNode.right, value)
+            currentNode.right = this.deleteNode(currentNode.right, value)
+        }else{
+
+            //add all operations of deletion here for all cases
+
+            // if there are no children or just right child (means no successor)
+            if(currentNode.left === null){
+                console.log(`No children or just right child`)
+                return currentNode.right;
+            }
+
+            // if there is only left child
+            if(currentNode.right === null){
+                console.log(`Left child present`)
+                return currentNode.left;
+            };
+
+            // if both children are present
+            console.log(`Both children present`)
+            const inOrderSuccessor = this.getSuccessor(currentNode.right, value);
+
+            currentNode.data = inOrderSuccessor.data;
+            currentNode.right = this.deleteNode(currentNode.right, inOrderSuccessor.data)
+
+            return currentNode;
+        }
+
+        // console.log(`Returning node ${currentNode.data}`)
+        return currentNode;
+    };
+
+    getSuccessor(root, value){
+        if(root.left === null){
+            return root;
+        }
+        const previousNode = root;
+        const currentNode = this.getSuccessor(root.left, value);
+
+        if(currentNode.left === null){
+            previousNode.left = null;
+            return currentNode;
+        };
+
+
     }
 
     //function that outputs a visual representation of the tree in console
