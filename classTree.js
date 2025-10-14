@@ -62,8 +62,6 @@ class Tree {
     // function that is called by user to delete a node
     deleteItem(value){
 
-        const currentNodeRef = null;
-
         this.deleteNode(this.root, value);
     }
 
@@ -76,10 +74,8 @@ class Tree {
         let currentNode = root;
 
         if(value < currentNode.data){
-            //this.deleteNode(currentNode.left, value)
             currentNode.left = this.deleteNode(currentNode.left, value)
         }else if(value > currentNode.data){
-            //this.deleteNode(currentNode.right, value)
             currentNode.right = this.deleteNode(currentNode.right, value)
         }else{
 
@@ -111,15 +107,8 @@ class Tree {
         if(root.left === null){
             return root;
         }
-        const previousNode = root;
         const currentNode = this.getSuccessor(root.left, value);
-
-        // if(currentNode.left === null){
-        //     previousNode.left = null;
-        //     return currentNode;
-        // };
         return currentNode;
-
 
     }
 
