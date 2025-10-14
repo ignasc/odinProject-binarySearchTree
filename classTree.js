@@ -70,11 +70,8 @@ class Tree {
     // function that is called internally to delete a node
     deleteNode(root, value){
         if(root === null){
-            console.log(`Root node is null`)
             return root;
         };
-
-        // console.log(`Traversing tree to node ${value}, current node is ${root.data}`)
 
         let currentNode = root;
 
@@ -86,22 +83,19 @@ class Tree {
             currentNode.right = this.deleteNode(currentNode.right, value)
         }else{
 
-            //add all operations of deletion here for all cases
+            //all operations of deletion here for all cases
 
             // if there are no children or just right child (means no successor)
             if(currentNode.left === null){
-                console.log(`No children or just right child`)
                 return currentNode.right;
             }
 
             // if there is only left child
             if(currentNode.right === null){
-                console.log(`Left child present`)
                 return currentNode.left;
             };
 
             // if both children are present
-            console.log(`Both children present`)
             const inOrderSuccessor = this.getSuccessor(currentNode.right, value);
 
             currentNode.data = inOrderSuccessor.data;
@@ -110,7 +104,6 @@ class Tree {
             return currentNode;
         }
 
-        // console.log(`Returning node ${currentNode.data}`)
         return currentNode;
     };
 
@@ -121,10 +114,11 @@ class Tree {
         const previousNode = root;
         const currentNode = this.getSuccessor(root.left, value);
 
-        if(currentNode.left === null){
-            previousNode.left = null;
-            return currentNode;
-        };
+        // if(currentNode.left === null){
+        //     previousNode.left = null;
+        //     return currentNode;
+        // };
+        return currentNode;
 
 
     }
