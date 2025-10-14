@@ -112,6 +112,24 @@ class Tree {
 
     }
 
+    //function that returns the node with matching value
+    find(value){
+        let currentNode = this.root;
+
+        while(currentNode != null){
+            if(currentNode.data === value){
+                return currentNode;
+            }
+            if(value < currentNode.data){
+                currentNode = currentNode.left;
+            }else if(value > currentNode.data){
+                currentNode = currentNode.right;
+            };
+        }
+
+        return `Node ${value} not found.`
+    }
+
     //function that outputs a visual representation of the tree in console
     prettyPrint = (node = this.root, prefix = '', isLeft = true) => {
         if (node === null) {
