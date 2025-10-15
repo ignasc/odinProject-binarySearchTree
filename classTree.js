@@ -155,7 +155,7 @@ class Tree {
 
     };
 
-    //function that performs in-order traversal of the tree and calls a function on each node
+    //function that calls a callback function on each node in in-order sequence
     inOrderForEach(callback){
         if(typeof callback != "function"){
             throw Error("supplied parameter must be a callback function")
@@ -180,7 +180,7 @@ class Tree {
         this.inOrderQueue(root.right, queue);
     }
 
-    //function that performs pre-order traversal of the tree and calls a function on each node
+    //function that calls a callback function on each node in pre-order sequence
     preOrderForEach(callback){
         if(typeof callback != "function"){
             throw Error("supplied parameter must be a callback function")
@@ -196,7 +196,7 @@ class Tree {
 
     };
 
-    //function that generates in-order queue of nodes and stores it in provided array
+    //function that generates pre-order queue of nodes and stores it in provided array
     preOrderQueue(root, queue){
         if(root === null){return};
 
@@ -205,7 +205,7 @@ class Tree {
         this.preOrderQueue(root.right, queue);
     }
 
-    //function that performs post-order traversal of the tree and calls a function on each node
+    //function that calls a callback function on each node in post-order sequence
     postOrderForEach(callback){
         if(typeof callback != "function"){
             throw Error("supplied parameter must be a callback function")
