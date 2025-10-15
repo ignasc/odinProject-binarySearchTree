@@ -155,6 +155,30 @@ class Tree {
 
     };
 
+    //function that performs in-order traversal of the tree and calls a function on each node
+    inOrderForEach(callback){
+        if(typeof callback != "function"){
+            throw Error("supplied parameter must be a callback function")
+        };
+
+    };
+
+    //function that performs pre-order traversal of the tree and calls a function on each node
+    preOrderForEach(callback){
+        if(typeof callback != "function"){
+            throw Error("supplied parameter must be a callback function")
+        };
+
+    };
+
+    //function that performs post-order traversal of the tree and calls a function on each node
+    postOrderForEach(callback){
+        if(typeof callback != "function"){
+            throw Error("supplied parameter must be a callback function")
+        };
+
+    };
+
     //function that outputs a visual representation of the tree in console
     prettyPrint = (node = this.root, prefix = '', isLeft = true) => {
         if (node === null) {
