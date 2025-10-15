@@ -186,7 +186,24 @@ class Tree {
             throw Error("supplied parameter must be a callback function")
         };
 
+        const nodeQueue = [];
+
+        this.preOrderQueue(this.root, nodeQueue);
+
+        for(let i = 0; i < nodeQueue.length; i++){
+            callback(nodeQueue[i])
+        };
+
     };
+
+    //function that generates in-order queue of nodes and stores it in provided array
+    preOrderQueue(root, queue){
+        if(root === null){return};
+
+        queue.push(root);
+        this.preOrderQueue(root.left, queue);
+        this.preOrderQueue(root.right, queue);
+    }
 
     //function that performs post-order traversal of the tree and calls a function on each node
     postOrderForEach(callback){
