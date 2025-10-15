@@ -47,3 +47,8 @@ binaryTree.prettyPrint();
 
 console.log(`\nFind value 23`);
 console.log(binaryTree.find(23));
+
+console.log(`\nBreadth-first level order traversal`)
+binaryTree.levelOrderForEach((element)=>{
+    console.log(`Callback called with ${element.data}`)
+})

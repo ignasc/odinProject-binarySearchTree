@@ -130,6 +130,31 @@ class Tree {
         return `Node ${value} not found.`
     }
 
+    //function that traverses tree in beadth-first level order and calls the callback function on each node.
+    levelOrderForEach(callback = null){
+        if(typeof callback != "function"){
+            throw Error("supplied parameter must be a callback function")
+        };
+
+        let currentNode = this.root;
+        const orderQueue = [];
+        orderQueue.push(currentNode);
+
+        while(orderQueue.length != 0){
+
+            if(currentNode.left != null){orderQueue.push(currentNode.left)};
+            if(currentNode.right != null){orderQueue.push(currentNode.right)};
+
+            callback(orderQueue.shift());
+
+            if(orderQueue.length != 0){
+                currentNode = orderQueue[0];
+            };
+
+        };
+
+    };
+
     //function that outputs a visual representation of the tree in console
     prettyPrint = (node = this.root, prefix = '', isLeft = true) => {
         if (node === null) {
