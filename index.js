@@ -58,7 +58,12 @@ binaryTree.prettyPrint();
 //     console.log(`Callback called on node ${element.data}`)
 // })
 
-console.log(`\nPre-order traversal`)
-binaryTree.preOrderForEach((element)=>{
+// console.log(`\nPre-order traversal`)
+// binaryTree.preOrderForEach((element)=>{
+//     console.log(`Callback called on node ${element.data}`)
+// })
+
+console.log(`\nPost-order traversal`)
+binaryTree.postOrderForEach((element)=>{
     console.log(`Callback called on node ${element.data}`)
 })
