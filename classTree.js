@@ -230,6 +230,12 @@ class Tree {
         queue.push(root);
     }
 
+    //function that returns the height (node to leaf node) of the given node or null if it doesn't exist.
+    height(value){};
+
+    //function that returns the depth (node to root node) of the given node or null if it doesn't exist.
+    depth(value){};
+
     //function that outputs a visual representation of the tree in console
     prettyPrint = (node = this.root, prefix = '', isLeft = true) => {
         if (node === null) {
