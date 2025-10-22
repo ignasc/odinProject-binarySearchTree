@@ -68,5 +68,8 @@ binaryTree.prettyPrint();
 //     console.log(`Callback called on node ${element.data}`)
 // })
 
-console.log(`\nNode 67 height:`);
-console.log(binaryTree.height(67));
+// console.log(`\nNode 67 height:`);
+// console.log(binaryTree.height(67));
+
+console.log(`\nNode 23 depth:`);
+console.log(binaryTree.depth(23));

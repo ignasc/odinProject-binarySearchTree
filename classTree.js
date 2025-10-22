@@ -252,7 +252,25 @@ class Tree {
     }
 
     //function that returns the depth (node to root node) of the given node or null if it doesn't exist.
-    depth(value){};
+    depth(value){
+        if(this.root.data === value){return 0};
+        if(!this.getNode(this.root, value)){return null};
+
+        let currentNode = this.root;
+        let depthCounter = 0;
+
+        while(currentNode.data != value){
+            if(value < currentNode.data){
+                currentNode = currentNode.left;
+                depthCounter++;
+            } else {
+                currentNode = currentNode.right;
+                depthCounter++;
+            };
+        }
+
+        return depthCounter;
+    };
 
     //function that outputs a visual representation of the tree in console
     prettyPrint = (node = this.root, prefix = '', isLeft = true) => {
