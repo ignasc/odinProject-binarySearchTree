@@ -63,7 +63,10 @@ binaryTree.prettyPrint();
 //     console.log(`Callback called on node ${element.data}`)
 // })
 
-console.log(`\nPost-order traversal`)
-binaryTree.postOrderForEach((element)=>{
-    console.log(`Callback called on node ${element.data}`)
-})
+// console.log(`\nPost-order traversal`)
+// binaryTree.postOrderForEach((element)=>{
+//     console.log(`Callback called on node ${element.data}`)
+// })
+
+console.log(`\nNode 67 height:`);
+console.log(binaryTree.height(67));

@@ -48,6 +48,7 @@ class Tree {
 
     //function that returns reference to node
     getNode(root, value){
+        if(root === null){return null}
         if(root.data === value){
             return root;
         };
@@ -230,8 +231,25 @@ class Tree {
         queue.push(root);
     }
 
-    //function that returns the height (node to leaf node) of the given node or null if it doesn't exist.
-    height(value){};
+    //function that calls heigh calculation method and returns its value or null if node does not exist.
+    height(value){
+        let nodeRef = this.getNode(this.root, value);
+
+        if(!nodeRef){return null};
+
+        return this.findHeight(nodeRef, 0) - 1;
+    };
+
+    // function that returns the height (node to leaf node) of the given node.
+    findHeight(root, currHeight){
+
+        if(!root){return 0};
+
+        let nodeHeightLeft = 1 + this.findHeight(root.left, currHeight);
+        let nodeHeightRight = 1 + this.findHeight(root.right, currHeight);
+
+        return nodeHeightLeft > nodeHeightRight ? nodeHeightLeft : nodeHeightRight;
+    }
 
     //function that returns the depth (node to root node) of the given node or null if it doesn't exist.
     depth(value){};
