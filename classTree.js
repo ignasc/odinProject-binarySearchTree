@@ -274,21 +274,27 @@ class Tree {
 
     //function that returns true if the tree is balanced and false if the tree is not balanced
     isBalanced(){
-        let node = this.root;
         let leftNodeHeight = 0;
         let rightNodeHeight = 0;
+        let maxHeightDiff = 0;
 
-        if(node.left){
-            leftNodeHeight = this.height(node.left.data);
-        };
+        this.levelOrderForEach((node) =>{
+            if(node.left){
+                leftNodeHeight = this.height(node.left.data);
+            };
 
-        if(node.right){
-            rightNodeHeight = this.height(node.right.data);
-        };
-        // this.levelOrderForEach((node) =>{
-        // })
+            if(node.right){
+                rightNodeHeight = this.height(node.right.data);
+            };
 
-        return Math.abs(leftNodeHeight) - Math.abs(rightNodeHeight);
+            let currentDiff = Math.abs(leftNodeHeight - rightNodeHeight);
+
+            if(maxHeightDiff < currentDiff){
+                maxHeightDiff = currentDiff;
+            }
+        })
+
+        return maxHeightDiff > 1 ? false : true;
     };
 
     //function that outputs a visual representation of the tree in console
