@@ -71,5 +71,8 @@ binaryTree.prettyPrint();
 // console.log(`\nNode 67 height:`);
 // console.log(binaryTree.height(67));
 
-console.log(`\nNode 23 depth:`);
-console.log(binaryTree.depth(23));
+// console.log(`\nNode 23 depth:`);
+// console.log(binaryTree.depth(23));
+
+console.log(`\nCheck if tree is balanced:`);
+console.log(binaryTree.isBalanced());
