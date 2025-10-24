@@ -74,5 +74,17 @@ binaryTree.prettyPrint();
 // console.log(`\nNode 23 depth:`);
 // console.log(binaryTree.depth(23));
 
+console.log(`\nInserting value 323 to make the tree unbalanced`);
+binaryTree.insert(323);
+binaryTree.insert(322);
+binaryTree.prettyPrint();
+
 console.log(`\nCheck if tree is balanced:`);
 console.log(binaryTree.isBalanced());
+
+console.log(`\nRebalancing the tree...`);
+console.log(binaryTree.rebalance());
+
+console.log(`\nCheck if tree is balanced:`);
+console.log(binaryTree.isBalanced());
+binaryTree.prettyPrint();

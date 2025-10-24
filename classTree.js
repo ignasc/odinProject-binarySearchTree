@@ -8,6 +8,7 @@ class Tree {
     buildTree(array){
         if(array.length == 0){return null};
         let middleIndex = parseInt(array.length / 2);
+        console.log(`Subtree root is ${array[middleIndex]}`)
 
         let leftHalfArray = array.slice(0, middleIndex);
         let rightHalfArray = array.slice(middleIndex + 1);
@@ -295,6 +296,20 @@ class Tree {
         })
 
         return maxHeightDiff > 1 ? false : true;
+    };
+
+    //function that rebalances the unbalanced tree
+    rebalance(){
+        const nodeArray = [];
+
+        this.inOrderForEach((node) => {
+            if(node){
+                nodeArray.push(node.data)
+            };
+        })
+
+        console.log(nodeArray)
+        this.buildTree(nodeArray);
     };
 
     //function that outputs a visual representation of the tree in console
