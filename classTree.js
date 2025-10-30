@@ -6,15 +6,24 @@ class Tree {
     }
 
     buildTree(array){
-        if(array.length == 0){return null};
-        let middleIndex = parseInt(array.length / 2);
-        console.log(`Subtree root is ${array[middleIndex]}`)
+        let sortedArray = [...array];
+        sortedArray.sort((a,b)=>{
+            if(a < b){return -1};
+            if(a == b){return 0};
+            if(a > b){return 1};
+        });
 
-        let leftHalfArray = array.slice(0, middleIndex);
-        let rightHalfArray = array.slice(middleIndex + 1);
+        let arrayNoDuplicates = [...new Set(sortedArray)];
+
+        if(arrayNoDuplicates.length == 0){return null};
+        let middleIndex = parseInt(arrayNoDuplicates.length / 2);
+        console.log(`Subtree root is ${arrayNoDuplicates[middleIndex]}`)
+
+        let leftHalfArray = arrayNoDuplicates.slice(0, middleIndex);
+        let rightHalfArray = arrayNoDuplicates.slice(middleIndex + 1);
 
         return new Node(
-            array[middleIndex],
+            arrayNoDuplicates[middleIndex],
             this.buildTree(leftHalfArray),
             this.buildTree(rightHalfArray))
     }

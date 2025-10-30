@@ -2,17 +2,7 @@ import Tree from "./classTree.js";
 
 const testData = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
 
-let arraySorted = testData.sort((a,b)=>{
-    if(a < b){return -1};
-    if(a == b){return 0};
-    if(a > b){return 1};
-});
-
-let arrayNoDuplicates = [...new Set(arraySorted)];
-
-const binaryTree = new Tree(arrayNoDuplicates);
-
-console.log(`\nSorted array without duplicates:\n${arrayNoDuplicates}\n`);
+const binaryTree = new Tree(testData);
 
 binaryTree.prettyPrint();
 
@@ -88,3 +78,21 @@ console.log(binaryTree.rebalance());
 console.log(`\nCheck if tree is balanced:`);
 console.log(binaryTree.isBalanced());
 binaryTree.prettyPrint();
+
+//Driver script
+
+// function generateArrayOfRandomNumbers(minSize, maxSize, numberOfElements){
+//     const array = [];
+
+//     while(array.length < numberOfElements){
+//         const randomNumber = Math.floor((maxSize - minSize) * Math.random()) + minSize;
+//         array.push(randomNumber);
+//     };
+
+//     return array;
+// };
+
+// const arrayOfNumbers = generateArrayOfRandomNumbers(1, 100, 100);
+
+// console.log(arrayOfNumbers);
+// console.log(arrayOfNumbers.length);
