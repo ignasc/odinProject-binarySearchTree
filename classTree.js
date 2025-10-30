@@ -17,7 +17,6 @@ class Tree {
 
         if(arrayNoDuplicates.length == 0){return null};
         let middleIndex = parseInt(arrayNoDuplicates.length / 2);
-        console.log(`Subtree root is ${arrayNoDuplicates[middleIndex]}`)
 
         let leftHalfArray = arrayNoDuplicates.slice(0, middleIndex);
         let rightHalfArray = arrayNoDuplicates.slice(middleIndex + 1);
@@ -317,7 +316,6 @@ class Tree {
             };
         })
 
-        console.log(nodeArray)
         this.root = this.buildTree(nodeArray);
     };
 
