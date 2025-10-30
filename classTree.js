@@ -309,7 +309,7 @@ class Tree {
         })
 
         console.log(nodeArray)
-        this.buildTree(nodeArray);
+        this.root = this.buildTree(nodeArray);
     };
 
     //function that outputs a visual representation of the tree in console
