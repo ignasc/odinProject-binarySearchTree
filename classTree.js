@@ -75,7 +75,7 @@ class Tree {
         this.deleteNode(this.root, value);
     }
 
-    // function that is called internally to delete a node
+    // HELPER function that is called internally to delete a node
     deleteNode(root, value){
         if(root === null){
             return root;
@@ -122,7 +122,7 @@ class Tree {
 
     }
 
-    //function that returns the node with matching value
+    // function that returns the node with matching value
     find(value){
         let currentNode = this.root;
 
@@ -140,7 +140,7 @@ class Tree {
         return `Node ${value} not found.`
     }
 
-    //function that traverses tree in beadth-first level order and calls the callback function on each node.
+    // function that traverses tree in beadth-first level order and calls the callback function on each node.
     levelOrderForEach(callback = null){
         if(typeof callback != "function"){
             throw Error("supplied parameter must be a callback function")
@@ -165,7 +165,7 @@ class Tree {
 
     };
 
-    //function that calls a callback function on each node in in-order sequence
+    // function that calls a callback function on each node in in-order sequence
     inOrderForEach(callback){
         if(typeof callback != "function"){
             throw Error("supplied parameter must be a callback function")
@@ -181,7 +181,7 @@ class Tree {
 
     };
 
-    //function that generates in-order queue of nodes and stores it in provided array
+    // HELPER function that generates in-order queue of nodes and stores it in provided array
     inOrderQueue(root, queue){
         if(root === null){return}
 
@@ -190,7 +190,7 @@ class Tree {
         this.inOrderQueue(root.right, queue);
     }
 
-    //function that calls a callback function on each node in pre-order sequence
+    // function that calls a callback function on each node in pre-order sequence
     preOrderForEach(callback){
         if(typeof callback != "function"){
             throw Error("supplied parameter must be a callback function")
@@ -206,7 +206,7 @@ class Tree {
 
     };
 
-    //function that generates pre-order queue of nodes and stores it in provided array
+    // HELPER function that generates pre-order queue of nodes and stores it in provided array
     preOrderQueue(root, queue){
         if(root === null){return};
 
@@ -215,7 +215,7 @@ class Tree {
         this.preOrderQueue(root.right, queue);
     }
 
-    //function that calls a callback function on each node in post-order sequence
+    // function that calls a callback function on each node in post-order sequence
     postOrderForEach(callback){
         if(typeof callback != "function"){
             throw Error("supplied parameter must be a callback function")
@@ -231,7 +231,7 @@ class Tree {
 
     };
 
-    //function that generates post-order queue of nodes and stores it in provided array
+    // HELPER function that generates post-order queue of nodes and stores it in provided array
     postOrderQueue(root, queue){
         if(root === null){return};
 
@@ -240,7 +240,7 @@ class Tree {
         queue.push(root);
     }
 
-    //function that calls heigh calculation method and returns its value or null if node does not exist.
+    // function that calls heigh calculation method and returns its value or null if node does not exist.
     height(value){
         let nodeRef = this.getNode(this.root, value);
 
@@ -249,7 +249,7 @@ class Tree {
         return this.findHeight(nodeRef, 0) - 1;
     };
 
-    // function that returns the height (node to leaf node) of the given node.
+    // HELPER function that returns the height (node to leaf node) of the given node.
     findHeight(root, currHeight){
 
         if(!root){return 0};
@@ -260,7 +260,7 @@ class Tree {
         return nodeHeightLeft > nodeHeightRight ? nodeHeightLeft : nodeHeightRight;
     }
 
-    //function that returns the depth (node to root node) of the given node or null if it doesn't exist.
+    // function that returns the depth (node to root node) of the given node or null if it doesn't exist.
     depth(value){
         if(this.root.data === value){return 0};
         if(!this.getNode(this.root, value)){return null};
@@ -281,7 +281,7 @@ class Tree {
         return depthCounter;
     };
 
-    //function that returns true if the tree is balanced and false if the tree is not balanced
+    // function that returns true if the tree is balanced and false if the tree is not balanced
     isBalanced(){
         let leftNodeHeight = 0;
         let rightNodeHeight = 0;
@@ -306,7 +306,7 @@ class Tree {
         return maxHeightDiff > 1 ? false : true;
     };
 
-    //function that rebalances the unbalanced tree
+    // function that rebalances the unbalanced tree
     rebalance(){
         const nodeArray = [];
 
@@ -319,7 +319,7 @@ class Tree {
         this.root = this.buildTree(nodeArray);
     };
 
-    //function that outputs a visual representation of the tree in console
+    // function that outputs a visual representation of the tree in console (supplied by OdinProject course)
     prettyPrint = (node = this.root, prefix = '', isLeft = true) => {
         if (node === null) {
             return;
